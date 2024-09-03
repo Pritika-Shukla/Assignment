@@ -18,7 +18,7 @@ const Gallery = () => {
 
   const handleScroll = (direction) => {
     if (scrollContainerRef.current) {
-      const scrollAmount = 300; // Adjust this value to control scroll distance
+      const scrollAmount = 300;
       scrollContainerRef.current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
         behavior: 'smooth'
@@ -27,50 +27,53 @@ const Gallery = () => {
   };
 
   return (
-    <div className="bg-customGray rounded-2xl p-4 max-w-2xl shadow-black shadow-md">
-      <div className="flex items-center justify-between w-5/6 mb-8">
-        <div className="flex items-center space-x-4">
+    <div className="bg-customGray rounded-2xl py-5 px-3  mb-4 w-full max-w-2xl lg:max-w-xl xl:max-w-2xl shadow-md shadow-black transition-all duration-300 ease-in-out ml-11 ">
+      <div className="flex flex-col sm:flex-row items-center justify-between w-full mb-4 sm:mb-8 ">
+        <div className="flex justify-between space-x-4 mb-4 sm:mb-0">
           <CircleHelp className="opacity-30 text-white" />
-          <button className="px-10 py-4 bg-zinc-900 text-white rounded-2xl text-sm font-medium">
+          <button className="px-6 sm:px-10 py-3 sm:py-4 bg-zinc-900 text-white rounded-2xl text-xs sm:text-sm font-medium">
             Gallery
           </button>
         </div>
-        <div className="flex justify-end space-x-2">
+        <div className="flex flex-wrap justify-center sm:justify-end space-x-4 mr-20">
           <button
             onClick={handleAddImage}
-            className="bg-customGray px-3 py-3 font-semibold rounded-full flex items-center text-white shadow-black shadow-md text-xs mr-5"
+            className="bg-customGray px-3 py-3 font-semibold rounded-full flex items-center text-white shadow-black shadow-md text-xs mb-2 sm:mb-0 sm:mr-5"
           >
             <Plus size={14} strokeWidth={2} className="mr-1" /> ADD IMAGE
           </button>
           <button 
-            className="opacity-40 hover:opacity-100 p-3 shadow-lg shadow-cyan-200 hover:shadow-cyan-300 hover:shadow-2xl rounded-full text-white bg-zinc-900"
+            className="opacity-40 hover:opacity-100 p-3 shadow-lg shadow-cyan-200 hover:shadow-cyan-300 hover:shadow-2xl rounded-full text-white bg-zinc-900 "
             onClick={() => handleScroll('left')}
           >
             <ArrowLeft size={20} strokeWidth={3} />
           </button>
           <button 
-            className="opacity-40 hover:opacity-100 p-3 shadow-lg shadow-cyan-200 hover:shadow-cyan-300 hover:shadow-2xl rounded-full text-white bg-zinc-900"
+            className="opacity-40 hover:opacity-100 p-3 shadow-lg shadow-cyan-200 hover:shadow-cyan-300 hover:shadow-2xl rounded-full text-white bg-zinc-900 "
             onClick={() => handleScroll('right')}
           >
             <ArrowRight size={20} strokeWidth={3} />
           </button>
         </div>
       </div>
-      <div className="flex mt-1">
-        <DarkGrid />
+      <div className="flex flex-col sm:flex-row mt-1">
+        <div className="hidden sm:block">
+          <DarkGrid />
+        </div>
         <div 
           ref={scrollContainerRef}
-          className="w-11/12 mx-4 overflow-hidden "
+          className="w-full sm:w-11/12 mx-auto sm:mx-4 overflow-x-hidden"
         >
-          <div className="flex ">
+          <div className="flex">
             {images.map((image, i) => (
               <div
                 key={i}
-                className="flex-shrink-0 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-black transition-transform duration-300 ease-in-out transform hover:translate-x-2"               >
+                className="flex-shrink-0 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-black transition-transform duration-300 ease-in-out transform hover:translate-x-2"
+              >
                 <img
                   src={image}
                   alt={`Gallery item ${i + 1}`}
-                  className="h-44 w-44 object-cover grayscale hover:grayscale-0 mr-4 rounded-3xl"
+                  className="h-32 w-32 sm:h-44 sm:w-44 object-cover grayscale hover:grayscale-0 mr-4 rounded-3xl "
                 />
               </div>
             ))}
