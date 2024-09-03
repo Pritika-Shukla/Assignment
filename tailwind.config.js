@@ -11,12 +11,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        customGray: 'rgb(40,44,48)',
-        customBlack:'#202020',
+        customGray: '#393d46',
+        customBlack:'#2a2c31',
       },
     },
+    
   },
-  plugins: [
+  plugins:
+   [
+
     addVariablesForColors,
     function ({
       matchUtilities,
@@ -41,6 +44,7 @@ export default {
       }, { values: flattenColorPalette(theme("backgroundColor")), type: "color" });
     },
   ],
+
 };
 
 function addVariablesForColors({

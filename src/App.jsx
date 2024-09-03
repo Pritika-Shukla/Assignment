@@ -1,6 +1,7 @@
 import React from 'react'
-import { GridBackgroundDemo } from './components/ui/GridBackground'
-import ProfileUI from './components/Profile'
+import { GridBackgroundDemo } from './components/GridBackground'
+import ProfileUI from './components/ui/Profile'
+import Gallery from './components/ui/Gallery'
 
 const App = () => {
   return (
@@ -10,13 +11,18 @@ const App = () => {
       <div
         style={{
           position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
+          top: '10%',
+          left: '55%',
           zIndex: 1, // Make sure the ProfileUI is on top of the grid
         }}
       >
+   
         <ProfileUI />
+        
+        <div className='border border-b-4 rounded-md opacity-55 border-zinc-700 w-5/6 mb-4 ml-16'></div>
+        <Gallery/>
+        <div className='border border-b-4 rounded-md opacity-55 border-zinc-700 w-5/6 mt-4 ml-16'></div>
+
       </div>
     </div>
   )
